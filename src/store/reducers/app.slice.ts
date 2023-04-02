@@ -9,12 +9,16 @@ export const appSlice = createSlice({
   name: 'app',
   initialState,
   reducers: {
-    ping: (state, action ) => {
+    fetchUser: ()=> undefined,
+    setUser: (state, action)=>{
+      state.user = action.payload;
+    },
+    ping: (state, action) => {
           state.count = action.payload
     },
     pong: () => {},
     endGame: (state, action) => {
-      console.log(action.payload);
+      console.log(JSON.stringify(action.payload));
     },
     countUp: (state) => {
       console.log(222);
@@ -27,5 +31,5 @@ export const appSlice = createSlice({
   },
 });
 
-export const { ping, pong, endGame, countUp, countDown } = appSlice.actions;
+export const { ping, pong, endGame, countUp, countDown, fetchUser, setUser } = appSlice.actions;
 

@@ -1,12 +1,14 @@
-import { Action } from "@reduxjs/toolkit";
-import { Epic } from "redux-observable";
-
-export type RootEpic = Epic<Action, Action>;
-
 export interface AppState {
-  count:number
+  count: number,
+  user: User
 }
 
-export interface StoreState {
-  app: AppState;
+export interface User {
+  username: string;
+  sex: string;
+  id: number;
+  dept: {
+    id: number;
+    name: string;
+  };
 }

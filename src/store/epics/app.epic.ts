@@ -1,21 +1,16 @@
 import { combineEpics } from 'redux-observable';
 import { delay, filter, map, mergeMap, tap } from 'rxjs/operators';
-import { ping, countUp, endGame, pong } from '../reducers';
-import { ajax } from "rxjs/ajax";
+import { ping, countUp, endGame, pong, fetchUser, setUser } from '../reducers';
 import { RootEpic } from '../types';
+import { getUsers } from '../api';
 
 
-
-const ping$: RootEpic = (action$) =>
+const fetchUser$: RootEpic = (action$) =>
   action$.pipe(
-    filter(ping.match),
-    delay(1000),
-    tap(() => {
-      console.log('延迟执行');
-    }),
-    mergeMap(() => ajax.getJSON('https://api.github.com/users/soraping')
+    filter(fetchUser.match),
+    mergeMap(() => getUsers()
       .pipe(
-        map((response: any) => endGame(response)),
+        map((res: any) => setUser(res)),
       ))
   );
 
@@ -26,4 +21,4 @@ const pong$: RootEpic = (action$) =>
     // map(() => endGame())
   );
 
-export const appEpic$ = combineEpics(ping$, pong$);
+export const appEpic$ = combineEpics(fetchUser$, pong$);
