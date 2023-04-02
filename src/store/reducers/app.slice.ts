@@ -1,8 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-
-export interface AppState {
-  count:number
-}
+import { AppState } from '../types';
 
 const initialState: AppState = {
   count:0
@@ -16,7 +13,8 @@ export const appSlice = createSlice({
           state.count = action.payload
     },
     pong: () => {},
-    endGame: () => {
+    endGame: (state, action) => {
+      console.log(action.payload);
     },
     countUp: (state) => {
       console.log(222);
@@ -29,5 +27,5 @@ export const appSlice = createSlice({
   },
 });
 
-export const { countUp, countDown } = appSlice.actions;
+export const { ping, pong, endGame, countUp, countDown } = appSlice.actions;
 
