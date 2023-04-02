@@ -1,6 +1,5 @@
 {
   "name": "react-vite",
-  "private": true,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
@@ -17,12 +16,15 @@
     "react-router": "^6.9.0",
     "react-router-dom": "^6.9.0",
     "redux": "^4.2.1",
+    "redux-logger": "^3.0.6",
     "redux-observable": "^2.0.0",
     "rxjs": "^7.8.0"
   },
   "devDependencies": {
+    "@types/node": "^18.15.11",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
+    "@types/redux-logger": "^3.0.9",
     "@typescript-eslint/eslint-plugin": "^5.51.0",
     "@typescript-eslint/parser": "^5.51.0",
     "@vitejs/plugin-react-swc": "^3.0.0",
