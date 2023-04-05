@@ -2,21 +2,30 @@ import { createSlice } from '@reduxjs/toolkit';
 import { AppState } from '../types';
 
 const initialState: AppState = {
-  count:0
+  count: 0,
+  user: {
+    username: '',
+    sex: '',
+    id: 0,
+    dept: {
+      id: 0,
+      name: ''
+    }
+  }
 };
 
 export const appSlice = createSlice({
   name: 'app',
   initialState,
   reducers: {
-    fetchUser: ()=> undefined,
-    setUser: (state, action)=>{
+    fetchUser: () => undefined,
+    setUser: (state, action) => {
       state.user = action.payload;
     },
     ping: (state, action) => {
-          state.count = action.payload
+      state.count = action.payload
     },
-    pong: () => {},
+    pong: () => { },
     endGame: (state, action) => {
       console.log(JSON.stringify(action.payload));
     },
@@ -25,7 +34,7 @@ export const appSlice = createSlice({
 
       state.count += 1;
     },
-    countDown: (state) =>  {
+    countDown: (state) => {
       state.count -= 1
     },
   },

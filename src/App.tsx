@@ -2,7 +2,7 @@ import { SetStateAction, useEffect, useState } from "react";
 import DemoState from "./components/DemoState";
 import "./App.css";
 import Child from "./components/Child";
-import { appSlice, countDown, countUp } from './store/reducers';
+import { fetchUser, countDown, countUp } from './store/reducers';
 import { useDispatch, useSelector } from "react-redux";
 import { getCount, getUser } from "./store/selector";
 
@@ -10,13 +10,14 @@ function App() {
   const [count, setCount] = useState(0);
 
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(appSlice.actions.fetchUser());
-  }, []);
+
 
   const counts = useSelector(getCount)
 
   const user = useSelector(getUser)
+  useEffect(() => {
+    dispatch(fetchUser());
+  }, [dispatch, user]);
 
   return (
     <div className="App">
